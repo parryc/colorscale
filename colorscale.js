@@ -1,10 +1,25 @@
-
+//Parry Cadwallader
+//github.com/parryc
 (function (root){
 	function colorscale(){
 		return {
 			data: [],
 			options: {output: 'rgb'},
 			init: function(data){
+				var tempData = [];
+				//Check if tinycolor is being used
+				if(window.tinycolor) {
+					data.forEach(function(v,i){
+						tempData.push({value: v.value, color: tinycolor(v.color).toRgb()});
+					});
+					data = tempData;
+				} else {
+					//Check to make sure that there's a transparency value
+					data.forEach(function(v,i){
+						if(!v.a)
+							data[i].color.a = 1;
+					});
+				}
 				this.data = data;
 			},
 			interp: function(c1,c2,per){
@@ -17,7 +32,7 @@
 			output: function(color){
 				var output = this.options.output;
 				if(!output || output === 'rgb') {
-					if(color.a)
+					if(color.a != 1)
 						return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
 					else
 						return 'rgb('+color.r+','+color.g+','+color.b+')';
