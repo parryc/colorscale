@@ -5,7 +5,7 @@
 		return {
 			data: [],
 			options: {output: 'rgb'},
-			init: function(data){
+			set: function(data){
 				var tempData = [];
 				//Check if tinycolor is being used
 				if(window.tinycolor) {
@@ -31,15 +31,19 @@
 			},
 			output: function(color){
 				var output = this.options.output;
+				//Only option of not using TinyColor
 				if(!output || output === 'rgb') {
 					if(color.a != 1)
 						return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
 					else
 						return 'rgb('+color.r+','+color.g+','+color.b+')';
 				}
-				if(output === 'hex') {
-					return '#'+parseInt(color.r,16)+parseInt(color.g,16)+parseInt(color.b,16);
-				}
+				if(output === 'hex')
+					return tinycolor(color).toHexString();
+				if(output === 'hsl')
+					return tinycolor(color).toHslString();
+				if(output === 'hsv')
+					return tinycolor(color).toHsvString();
 			},
 			pick: function(point){
 				var data = this.data,
@@ -63,7 +67,10 @@
 				return this.interp(minColor,maxColor,((point-min)/(max-min)));
 			},
 			setOutput: function(output){
-				this.options.output = output;
+				if(window.tinycolor)
+					this.options.output = output;
+				else
+					console.log("TinyColor not installed, only RGB(a) available as output");
 			}
 		};
 	}
