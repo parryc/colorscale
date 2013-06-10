@@ -34,9 +34,9 @@
 				//Only option of not using TinyColor
 				if(!output || output === 'rgb') {
 					if(color.a != 1)
-						return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
+						return 'rgba('+Math.round(color.r)+','+Math.round(color.g)+','+Math.round(color.b)+','+color.a+')';
 					else
-						return 'rgb('+color.r+','+color.g+','+color.b+')';
+						return 'rgb('+Math.round(color.r)+','+Math.round(color.g)+','+Math.round(color.b)+')';
 				}
 				if(output === 'hex')
 					return tinycolor(color).toHexString();
