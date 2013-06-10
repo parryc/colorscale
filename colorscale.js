@@ -31,7 +31,7 @@
 			},
 			output: function(color){
 				var output = this.options.output;
-				//Only option of not using TinyColor
+				//Only option if not using TinyColor
 				if(!output || output === 'rgb') {
 					if(color.a != 1)
 						return 'rgba('+Math.round(color.r)+','+Math.round(color.g)+','+Math.round(color.b)+','+color.a+')';
@@ -57,7 +57,7 @@
 					windowMin = data[i].value;
 					windowMax = data[i+1].value;
 
-					if(windowMin <= point <= windowMax) {
+					if(windowMin <= point && point <= windowMax) {
 						min = data[i].value;
 						minColor = data[i].color;
 						max = data[i+1].value;
