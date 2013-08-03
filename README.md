@@ -18,8 +18,8 @@ Initialize takes an array of objects with a value and a color.
 (with TinyColor)
 ````
 colorscale.set([
-	{value: 0, color: "rgb{0,0,255}"},
-	{value: 10, color: "rgba(0,255,0,.5}"}
+	{value: 0, color: "rgb(0,0,255)"},
+	{value: 10, color: "rgba(0,255,0,.5)"}
 ]);
 ````
 (without TinyColor)
