@@ -13,24 +13,24 @@ Raw is simply ```colorscale.js```, throw in ```tinycolor.js``` if you want to ha
 
 
 ## How to use
-Initialize takes an array of objects with a value and a color.
+Create ```create(colors, name)``` a color scale with a set of points and associated color and a name for the scale. The ```colors``` array is an array of objects containing ```value```, the number to associate with the color, and ```color```, a color object. Examples below.
 
-(with TinyColor)
+*(with TinyColor)*
 ````
-colorscale.set([
+colorscale.create([
 	{value: 0, color: "rgb(0,0,255)"},
 	{value: 10, color: "rgba(0,255,0,.5)"}
-]);
+], "example1");
 ````
-(without TinyColor)
+*(without TinyColor)*
 ````
-colorscale.set([
+colorscale.create([
 	{value: 0, color: {r:0,g:0,b:0}},
 	{value: 10, color: {r:0,g:255,b:0,a:.5}}
-]);
+], "example2");
 ````
 
-After that it's a simple as ```colorscale.pick(NUMBER)``` and it will return a string with the interpolated color.
+After that it's a simple as ```colorscale.NAME.pick(NUMBER)``` and it will return a string with the interpolated color, e.g. ```colorscale.example1.pick(5)```
 
 ## Options
 
