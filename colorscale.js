@@ -59,7 +59,6 @@
                 maxColor = data[1].color,
                 windowMin, windowMax;
 
-              console.log(this.data);
               //Find which two colors to interpolate between
               for(var i = 0; i < data.length-1; i++){
                 windowMin = data[i].value;
@@ -80,11 +79,11 @@
               else
                 console.log("TinyColor not installed, only RGB(a) available as output");
             }
-          }
+          };
         root.colorscale[name].set(data);
       }
-    }
-  };
+    };
+  }
   
   //export to window
   root.colorscale = colorscale();
